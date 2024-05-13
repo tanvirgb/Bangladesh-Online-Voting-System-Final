@@ -9,6 +9,7 @@ const ElectionAdminRegistration = () => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -36,7 +37,7 @@ const ElectionAdminRegistration = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Perform form validation here
+
     if (
       !name ||
       !email ||
@@ -60,22 +61,39 @@ const ElectionAdminRegistration = () => {
           number: number,
         };
 
-        console.log(formData);
+        const response = await axios.post(
+          "http://localhost:3000/api/electionAdmin",
+          formData
+        );
 
-        // Reset form fields and error state
+        console.log("User registered successfully:", response.data);
+
+        setSuccessMessage("User registered successfully!");
+        setError(""); // Clear any previous errors
+
         setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
         setAddress("");
         setNumber("");
-        setError("");
       } catch (error: any) {
-        // Handle error if the POST request fails
         console.error("Error registering user:", error.message);
+
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.error
+        ) {
+          setError(error.response.data.error);
+        } else {
+          setError("An error occurred while registering the user.");
+        }
+        setSuccessMessage(""); // Clear any previous success message
       }
     }
   };
+
   const isValidEmail = (email: string) => {
     const emailPattern = /^\S+@\S+\.\S+$/;
     return emailPattern.test(email);
@@ -185,6 +203,11 @@ const ElectionAdminRegistration = () => {
           {error && (
             <p className="text-red-500 text-sm bg-red-100 border border-red-400 px-4 py-2 mb-4 rounded-md">
               {error}
+            </p>
+          )}
+          {successMessage && (
+            <p className="text-green-500 text-sm bg-green-100 border border-green-400 px-4 py-2 mb-4 rounded-md">
+              {successMessage}
             </p>
           )}
           <div className="flex justify-center">

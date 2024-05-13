@@ -4,7 +4,6 @@ import React from "react";
 const ElectionAdminHeader = () => {
   return (
     <div className="flex justify-between items-center px-4 py-2 bg-gradient-to-b from-green-500 to-red-600">
-      {/* Left Section: Logo */}
       <div className="flex items-center">
         <img
           className="h-16 w-16 rounded-full object-cover"
@@ -16,7 +15,6 @@ const ElectionAdminHeader = () => {
         </h1>
       </div>
 
-      {/* Right Section: Navigation */}
       <ul className="flex space-x-4 text-lg font-semibold">
         <li>
           <Link
