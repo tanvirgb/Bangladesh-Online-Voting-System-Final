@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const ElectionAdminRegistration = () => {
   const [name, setName] = useState("");
@@ -8,6 +8,30 @@ const ElectionAdminRegistration = () => {
   const [address, setAddress] = useState("");
   const [number, setNumber] = useState("");
   const [error, setError] = useState("");
+
+  const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleChangeConfirmPassword = (e: ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleChangeAddress = (e: ChangeEvent<HTMLInputElement>) => {
+    setAddress(e.target.value);
+  };
+
+  const handleChangeNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    setNumber(e.target.value);
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,15 +45,25 @@ const ElectionAdminRegistration = () => {
       !number
     ) {
       setError("All fields are required");
-      return;
-    }
-    if (password !== confirmPassword) {
+    } else if (!isValidEmail(email)) {
+      setError("Invalid email address");
+    } else if (password !== confirmPassword) {
       setError("Passwords do not match");
-      return;
+    } else {
+      console.log({ name, email, password, confirmPassword, address, number });
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setAddress("");
+      setNumber("");
+      setError("");
     }
-    // If all validations pass, submit the form
-    console.log("Form submitted successfully");
-    setError("");
+  };
+
+  const isValidEmail = (email: string) => {
+    const emailPattern = /^\S+@\S+\.\S+$/;
+    return emailPattern.test(email);
   };
 
   return (
@@ -48,7 +82,7 @@ const ElectionAdminRegistration = () => {
               id="fullName"
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChangeName}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your full name"
             />
@@ -64,7 +98,7 @@ const ElectionAdminRegistration = () => {
               id="email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChangeEmail}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your email"
             />
@@ -80,7 +114,7 @@ const ElectionAdminRegistration = () => {
               id="password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChangePassword}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your password"
             />
@@ -96,7 +130,7 @@ const ElectionAdminRegistration = () => {
               id="confirmPassword"
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={handleChangeConfirmPassword}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Confirm your password"
             />
@@ -112,7 +146,7 @@ const ElectionAdminRegistration = () => {
               id="address"
               type="text"
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={handleChangeAddress}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your address"
             />
@@ -128,7 +162,7 @@ const ElectionAdminRegistration = () => {
               id="mobileNumber"
               type="text"
               value={number}
-              onChange={(e) => setNumber(e.target.value)}
+              onChange={handleChangeNumber}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your mobile number"
             />
