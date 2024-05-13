@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const ElectionAdminRegistration = () => {
@@ -33,7 +34,7 @@ const ElectionAdminRegistration = () => {
     setNumber(e.target.value);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Perform form validation here
     if (
@@ -50,17 +51,31 @@ const ElectionAdminRegistration = () => {
     } else if (password !== confirmPassword) {
       setError("Passwords do not match");
     } else {
-      console.log({ name, email, password, confirmPassword, address, number });
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setAddress("");
-      setNumber("");
-      setError("");
+      try {
+        const formData = {
+          name: name,
+          email: email,
+          password: password,
+          address: address,
+          number: number,
+        };
+
+        console.log(formData);
+
+        // Reset form fields and error state
+        setName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setAddress("");
+        setNumber("");
+        setError("");
+      } catch (error: any) {
+        // Handle error if the POST request fails
+        console.error("Error registering user:", error.message);
+      }
     }
   };
-
   const isValidEmail = (email: string) => {
     const emailPattern = /^\S+@\S+\.\S+$/;
     return emailPattern.test(email);

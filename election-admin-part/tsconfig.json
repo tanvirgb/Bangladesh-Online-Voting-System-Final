@@ -21,6 +21,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/_entities/ElectionAdmin.js",
+    "src/app/_entities/ElectionAdmin.js",
+    "src/app/utils/dbConnect.tsxx"
+  ],
   "exclude": ["node_modules"]
 }
