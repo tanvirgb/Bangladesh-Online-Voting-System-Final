@@ -3,73 +3,48 @@ import { useRouter } from "next/navigation";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
 const ElectionAdminLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
   const router = useRouter();
 
-  const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email || !password) {
-      setError("Email and password are required");
-    } else if (!isValidEmail(email)) {
-      setError("Invalid email address");
+      setError(true);
+      return false;
     } else {
-      try {
-        let response = await axios.post(
-          "http://localhost:3000/api/electionAdmin",
-          {
-            method: "POST",
-            body: JSON.stringify({ email, password, login: true }),
-          }
-        );
-
-        console.log("User login successfully:", response.data);
-
-        setSuccessMessage("User login successfully!");
-        console.log({ email, password });
-        setEmail("");
-        setPassword("");
-        setError("");
-        if (response.data.success) {
-          router.push("/electionAdmin/dashboard");
-        }
-      } catch (error: any) {
-        console.error("Error in login:", error.message);
-
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.error
-        ) {
-          setError(error.response.data.error);
-        } else {
-          setError("An error occurred while login");
-        }
-        setSuccessMessage("");
-      }
+      setError(false);
     }
-  };
-
-  const isValidEmail = (email: string) => {
-    const emailPattern = /^\S+@\S+\.\S+$/;
-    return emailPattern.test(email);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/electionAdmin",
+        {
+          email,
+          password,
+          login: true,
+        }
+      );
+      const { data } = response;
+      if (data) {
+        const { result }: any = data;
+        delete result.password;
+        localStorage.setItem("electionAdmin", JSON.stringify(result));
+        router.push("/electionAdmin/dashboard");
+      } else {
+        alert("Login failed");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Login failed");
+    }
   };
 
   return (
     <>
       <h3 className="text-3xl font-bold mb-6 text-center">Login</h3>
       <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
-        <form className="px-8 py-6" onSubmit={handleSubmit}>
+        <form className="px-8 py-6" onSubmit={handleLogin}>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -80,11 +55,18 @@ const ElectionAdminLogin = () => {
             <input
               type="email"
               name="email"
-              value={email}
-              onChange={handleChangeEmail}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your email"
+              value={email}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
             />
+            {error && !email && (
+              <span className="text-red-500 text-sm mt-1">
+                Please enter a valid email
+              </span>
+            )}
           </div>
           <div className="mb-6">
             <label
@@ -96,22 +78,20 @@ const ElectionAdminLogin = () => {
             <input
               type="password"
               name="password"
-              value={password}
-              onChange={handleChangePassword}
               className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="Enter your password"
+              value={password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
             />
+            {error && !password && (
+              <span className="text-red-500 text-sm mt-1">
+                Please enter a valid password
+              </span>
+            )}
           </div>
-          {error && (
-            <p className="text-red-500 text-sm bg-red-100 border border-red-400 px-4 py-2 mb-4 rounded-md">
-              {error}
-            </p>
-          )}
-          {successMessage && (
-            <p className="text-green-500 text-sm bg-green-100 border border-green-400 px-4 py-2 mb-4 rounded-md">
-              {successMessage}
-            </p>
-          )}
+
           <div className="flex justify-center">
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
               Login
