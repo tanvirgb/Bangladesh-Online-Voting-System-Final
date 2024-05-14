@@ -9,7 +9,7 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="bg-gradient-to-r from-blue-200 to-purple-200 min-h-screen">
+      <div className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 flex flex-col justify-center items-center py-8">
         <Head>
           <title>About Online Voting System</title>
           <meta

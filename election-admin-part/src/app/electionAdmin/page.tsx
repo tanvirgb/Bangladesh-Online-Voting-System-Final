@@ -12,7 +12,7 @@ const ElectionAdmin = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 flex flex-col justify-center items-center py-8">
+      <div className="min-h-screen bg-gradient-to-b from-green-700 via-green-600 to-green-500 flex flex-col justify-center items-center py-8">
         <h1 className="text-4xl font-bold mb-6 text-center text-white">
           <Typewriter
             options={{
