@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const ElectionAdminHeader = () => {
+const Header = () => {
   return (
     <div className="flex justify-between items-center px-4 py-2 bg-gradient-to-b from-green-500 to-red-600">
       <div className="flex items-center">
@@ -26,7 +26,7 @@ const ElectionAdminHeader = () => {
         </li>
         <li>
           <Link
-            href="/"
+            href="/electionAdmin"
             className="text-white hover:text-yellow-300 transition duration-300 ease-in-out"
           >
             Login/Registration
@@ -34,7 +34,7 @@ const ElectionAdminHeader = () => {
         </li>
         <li>
           <Link
-            href="/"
+            href="/aboutUs"
             className="text-white hover:text-yellow-300 transition duration-300 ease-in-out"
           >
             About Us
@@ -45,4 +45,4 @@ const ElectionAdminHeader = () => {
   );
 };
 
-export default ElectionAdminHeader;
+export default Header;

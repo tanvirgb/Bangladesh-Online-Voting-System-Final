@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const ElectionAdminRegistration = () => {
@@ -10,6 +11,7 @@ const ElectionAdminRegistration = () => {
   const [number, setNumber] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const router = useRouter();
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -61,7 +63,7 @@ const ElectionAdminRegistration = () => {
           number: number,
         };
 
-        const response = await axios.post(
+        let response = await axios.post(
           "http://localhost:3000/api/electionAdmin",
           formData
         );
@@ -69,7 +71,7 @@ const ElectionAdminRegistration = () => {
         console.log("User registered successfully:", response.data);
 
         setSuccessMessage("User registered successfully!");
-        setError(""); // Clear any previous errors
+        setError("");
 
         setName("");
         setEmail("");
@@ -77,6 +79,7 @@ const ElectionAdminRegistration = () => {
         setConfirmPassword("");
         setAddress("");
         setNumber("");
+        router.push("/electionAdmin/dashboard");
       } catch (error: any) {
         console.error("Error registering user:", error.message);
 
@@ -89,7 +92,7 @@ const ElectionAdminRegistration = () => {
         } else {
           setError("An error occurred while registering the user.");
         }
-        setSuccessMessage(""); // Clear any previous success message
+        setSuccessMessage("");
       }
     }
   };

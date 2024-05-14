@@ -8,5 +8,4 @@ export const electionAdminsModel = new mongoose.Schema({
   number: String,
 });
 export const electionAdminSchema =
-  mongoose.models.election_admins ||
-  mongoose.model("electionAdmins", electionAdminsModel);
+  mongoose.models.admins || mongoose.model("admins", electionAdminsModel);

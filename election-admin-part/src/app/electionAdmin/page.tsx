@@ -2,16 +2,16 @@
 import React, { useState } from "react";
 import ElectionAdminLogin from "../_components/ElectionAdminLogin";
 import ElectionAdminRegistration from "../_components/ElectionAdminRegistration";
-import ElectionAdminHeader from "../_components/ElectionAdminHeader";
 import Typewriter from "typewriter-effect";
 import Footer from "../_components/Footer";
+import Header from "../_components/Header";
 
 const ElectionAdmin = () => {
   const [login, setLogin] = useState(true);
 
   return (
     <>
-      <ElectionAdminHeader />
+      <Header />
       <div className="min-h-screen bg-gradient-to-b from-green-500 via-green-600 to-green-700 flex flex-col justify-center items-center py-8">
         <h1 className="text-4xl font-bold mb-6 text-center text-white">
           <Typewriter
