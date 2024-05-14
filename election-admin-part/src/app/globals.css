@@ -36,3 +36,26 @@
     border-color: white;
   }
 }
+
+.scroll-text-container {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.scrolling-text {
+  animation: scroll-left 25s linear infinite;
+  white-space: nowrap;
+  color: blue;
+  font-size: 20px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

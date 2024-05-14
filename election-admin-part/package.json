@@ -16,9 +16,11 @@
     "express": "^4.19.2",
     "mongoose": "^8.3.4",
     "next": "14.2.3",
+    "next-themes": "^0.3.0",
     "pg": "^8.11.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.2.1",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
     "typewriter-effect": "^2.21.0"

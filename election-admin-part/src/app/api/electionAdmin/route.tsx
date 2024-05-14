@@ -1,12 +1,10 @@
 import { connectionStr } from "@/app/lib/db";
 import { electionAdminSchema } from "@/app/lib/electionAdminsModel";
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  await mongoose.connect(connectionStr, {
-    useNewUrlParser: true,
-  } as ConnectOptions);
+  await mongoose.connect(connectionStr);
   const data = await electionAdminSchema.find();
   console.log(data);
 
@@ -28,8 +26,8 @@ export async function POST(request: any) {
       success = true;
     }
   } else {
-    const restaurant = new electionAdminSchema(payload);
-    result = await restaurant.save();
+    const electionAdmin = new electionAdminSchema(payload);
+    result = await electionAdmin.save();
     if (result) {
       success = true;
     }

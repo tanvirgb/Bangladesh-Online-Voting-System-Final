@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "src/app/_entities/ElectionAdmin.js",
     "src/app/_entities/ElectionAdmin.js",
-    "src/app/utils/dbConnect.tsxx"
+    "src/app/utils/dbConnect.tsx"
   ],
   "exclude": ["node_modules"]
 }

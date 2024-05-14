@@ -90,7 +90,7 @@ const ElectionAdminRegistration = () => {
         ) {
           setError(error.response.data.error);
         } else {
-          setError("An error occurred while registering the user.");
+          setError("An error occurred while registering the user");
         }
         setSuccessMessage("");
       }
