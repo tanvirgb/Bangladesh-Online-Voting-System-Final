@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <img
           className="h-16 w-16 rounded-full object-cover"
-          src="../../democrats-3594094_1920.jpg"
+          src="../../../democrats-3594094_1920.jpg"
           alt="Logo"
         />
         <h1 className="ml-2 text-lg font-semibold text-white">
@@ -33,10 +33,10 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href="/electionAdmin/dashboard"
+            href="/search/electionAdmin/electionAdminList/"
             className="text-white hover:text-yellow-300 transition duration-300 ease-in-out"
           >
-            Search
+            View All Admins
           </Link>
         </li>
         <li>
