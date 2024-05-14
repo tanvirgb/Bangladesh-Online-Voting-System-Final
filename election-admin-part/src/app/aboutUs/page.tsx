@@ -1,9 +1,7 @@
-// pages/about.tsx
-
 import React from "react";
 import Head from "next/head";
-import Header from "../_components/Header";
 import Footer from "../_components/Footer";
+import Header from "../_components/Header";
 
 const AboutPage: React.FC = () => {
   return (

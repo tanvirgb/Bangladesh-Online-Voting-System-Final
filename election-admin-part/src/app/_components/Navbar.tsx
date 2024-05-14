@@ -41,18 +41,10 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href="/electionAdmin/dashboard"
+            href="/reportIssue"
             className="text-white hover:text-yellow-300 transition duration-300 ease-in-out"
           >
             Report Issue
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/aboutUs"
-            className="text-white hover:text-yellow-300 transition duration-300 ease-in-out"
-          >
-            About Us
           </Link>
         </li>
         <li>
