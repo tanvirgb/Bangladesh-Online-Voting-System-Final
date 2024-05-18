@@ -23,12 +23,12 @@ export default function Home() {
               Voter
             </button>{" "}
           </Link>
-          <Link href="/electionAdmin">
+          <Link href="http://localhost:3003/">
             <button className="bg-white text-blue-700 font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 hover:bg-blue-700 hover:text-white w-full sm:w-44">
               Candidate
             </button>{" "}
           </Link>
-          <Link href="http://localhost:3003/">
+          <Link href="http://localhost:3005/">
             <button className="bg-white text-blue-700 font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 hover:bg-blue-700 hover:text-white w-full sm:w-44">
               System Admin
             </button>
