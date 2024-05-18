@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+    background-image: url('../images/Bangladesh_Map.png');
+    background-size: 20%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+a {
+    transition: color 0.3s, box-shadow 0.3s;
+}
+
+a:hover {
+    color: #044b34;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
