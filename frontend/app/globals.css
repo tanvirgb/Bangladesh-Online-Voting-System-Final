@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgb(13, 90, 44), rgb(25, 136, 98), white);
+}
+
+.green-box {
+  background-color: #06B6D4; /* Adjust color as needed */
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
