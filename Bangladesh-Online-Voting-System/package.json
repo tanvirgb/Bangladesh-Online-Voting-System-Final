@@ -1,0 +1,46 @@
+{
+  "name": "election-admin-part",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build --port 3000",
+    "start": "next start --port 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/pg": "^8.11.6",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "js-cookie": "^3.0.5",
+    "mongoose": "^8.3.4",
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
+    "next-themes": "^0.3.0",
+    "pg": "^8.11.5",
+    "react": "^18",
+    "react-daisyui": "^5.0.0",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "typewriter-effect": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
